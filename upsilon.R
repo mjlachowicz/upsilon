@@ -46,9 +46,9 @@ upsilon <- function(x, mediator, dv, conf.level = 0.95, bootstrap.lavaan = TRUE,
         boot.med.res <- boot::boot(data,med.boot.fun,R=B)
         upsES.out <- data.frame(est=c(upsilon,adj.upsilon),
                                 lcl=c(ups.LCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,index=1)[[4]][4],
-                                    adj.ups.UCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,,index=2)[[4]][4]),
-                                ucl=c(ups.LCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,,index=1)[[4]][5],
-                                    adj.ups.UCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,,index=2)[[4]][5]),
+                                    adj.ups.UCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,index=2)[[4]][4]),
+                                ucl=c(ups.LCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,index=1)[[4]][5],
+                                    adj.ups.UCL=boot::boot.ci(boot.med.res,conf=conf.level,type=bootstrap.boot.type,index=2)[[4]][5]),
                                 row.names=c('Upsilon','Adj Upsilon'))
         colnames(upsES.out) <- c('Estimate',paste0(conf.level*100,'% ',bootstrap.boot.type,' LCL'),paste0(conf.level*100,'% ',bootstrap.boot.type,' UCL'))
         
