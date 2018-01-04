@@ -1,6 +1,5 @@
 upsilon <- function(x, mediator, dv, conf.level = 0.95, bootstrap.lavaan = TRUE, bootstrap.lavaan.type = "ordinary", bootstrap.boot = FALSE, bootstrap.boot.type = "perc", B = 1000, boot.data.out=FALSE){
   if("lavaan" %in% rownames(installed.packages())){
-    require(lavaan)
     data <- data.frame(x=x,mediator=mediator,dv=dv)
     med.model <- paste0(paste0(colnames(data)[2],'~',colnames(data)[1]),' \n ',paste0(colnames(data)[3],'~',colnames(data)[1],'+',colnames(data)[2]))
     med.res <- lavaan::sem(med.model,data)
